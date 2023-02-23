@@ -47,3 +47,32 @@ Constraints:
 ```
 
 # Solution
+
+Kadane's algorithm is a dynamic programming algorithm that finds the maximum subarray sum of a given array. It works by keeping track of the maximum subarray sum seen so far, and the maximum subarray sum ending at each position in the array.
+
+Here's the Pseudo code for Kadane's algorithm:
+```
+function kadane(arr) {
+    max_so_far = arr[0];
+    max_ending_here = arr[0];
+    for i in range(1, len(arr)) {
+        max_ending_here = max(arr[i], max_ending_here + arr[i]);
+        max_so_far = max(max_so_far, max_ending_here);
+    }
+    return max_so_far;
+}
+```
+
+In this approach, we initialize two variables `max_so_far` and `max_ending_here` to the first element of the array. We then iterate through the rest of the array, updating `max_ending_here` to be the maximum of the current element and the sum of the current element and the maximum subarray sum ending at the previous position. We also update `max_so_far` to be the maximum of `max_so_far` and `max_ending_here` at each position. Finally, we return `max_so_far`, which is the maximum subarray sum of the entire array.
+
+## Time and Space Complexity Analysis
+
+### Time complexity: `O(n)`
+
+Kadane's algorithm iterates through the input array once, so the time complexity is `O(n)`, where n is the length of the array.
+
+### Space complexity: `O(1)`
+
+Kadane's algorithm uses only constant space, so the space complexity is `O(1)`, regardless of the size of the input array.
+
+Overall, Kadane's algorithm is an efficient and elegant way to find the maximum subarray sum of an array, with linear time complexity and constant space complexity.

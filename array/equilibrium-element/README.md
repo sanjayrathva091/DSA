@@ -46,3 +46,25 @@ Constraints:
 ```
 
 # Solution :
+
+An equilibrium element in an array is an element such that the sum of all elements to the left of it is equal to the sum of all elements to the right of it. In other words, if we divide the array into two parts at the equilibrium element, the sum of the elements in the left part will be equal to the sum of the elements in the right part.
+
+To find the equilibrium element in an array, we can iterate through the array and at each index, we can calculate the sum of all elements to its left and right. If the left sum is equal to the right sum, then we have found the equilibrium element.
+
+## Pseudo code:
+```
+function findEquilibriumElement(arr) {
+    totalSum = sum(arr);
+    leftSum = 0
+    for i in range(length(arr)) {
+        rightSum = totalSum - leftSum - arr[i];
+        if (leftSum == rightSum) return i;
+        leftSum += arr[i];
+    }
+    return -1
+ }
+```
+
+In the pseudo code above, `arr` is the input array, `totalSum` is the sum of all elements in the array, `leftSum` is the sum of all elements to the left of the current index, and `rightSum` is the sum of all elements to the right of the current index.
+
+The function iterates through each index of the array and calculates the `rightSum` by subtracting `leftSum` and the current element from `totalSum`. If `leftSum` is equal to `rightSum`, then the function returns the current index as the equilibrium element. If no equilibrium element is found, the function returns -1.
